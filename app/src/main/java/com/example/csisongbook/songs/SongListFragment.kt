@@ -14,11 +14,12 @@ import com.example.csisongbook.SongDatabase
 
 class SongListFragment : Fragment() {
 
+    private lateinit var binding: SongListFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<SongListViewModelBinding>(inflater, R.layout.fragment_song_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_song_list, container, false)
         val application = requireNotNull(this.activity).application
         val dataSource = SongDatabase.getInstance(application).songDatabaseDao
         val songViewModelFactory = SongListViewModelFactory(dataSource, application)
@@ -28,3 +29,5 @@ class SongListFragment : Fragment() {
         return binding.root
     }
 }
+
+data class MyName(var name: String = "", var nickname: String = "")
