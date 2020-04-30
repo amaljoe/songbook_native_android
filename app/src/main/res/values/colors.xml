@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#EEEEEE</color>
     <color name="colorAccent">#00796B</color>
     <color name="onPrimary">#000000</color>
-    <color name="onPrimarySecondary">#707070</color>
+    <color name="onPrimaryVariant">#707070</color>
+    <color name="onPrimaryDisabled">#686868</color>
 </resources>

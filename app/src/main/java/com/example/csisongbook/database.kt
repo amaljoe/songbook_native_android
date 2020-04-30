@@ -10,13 +10,13 @@ data class Song(
     var songId: Int = 0,
 
     @ColumnInfo
-    val lyrics: String? = "",
+    val lyrics: String = "",
 
     @ColumnInfo
-    val title: String? = "",
+    val title: String = "",
 
     @ColumnInfo
-    val titleEng: String? = ""
+    val titleEng: String = ""
 )
 
 @Dao
@@ -29,9 +29,6 @@ interface SongDatabaseDao {
 
     @Query("Select * from songs where titleEng like  :query")
     fun getSearchResults(query : String) : LiveData<List<Song>>
-
-    @Query("Select * from songs where titleEng like  :query")
-    fun getNumSearchResults(query : String) : LiveData<List<Song>>
 }
 
 @Database(entities = [Song::class], version = 1, exportSchema = false)
