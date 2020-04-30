@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CSI song book</string>
+    <string name="song_search_hint">Enter song number or title</string>
+    <string name="sort_by_text">Sort by</string>
+    <string name="number_item">NUMBER</string>
+    <string name="title_item">TITLE</string>
+    <string name="song_item">പാട്ടുപുസ്തകം</string>
+    <string name="book_item">ആരാധനക്രമം</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
