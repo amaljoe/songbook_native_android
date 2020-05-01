@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="songItem"
@@ -8,9 +10,7 @@
             name="clickListener"
             type="com.example.csisongbook.songs.SongListListener" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/songListItemLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -38,9 +38,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="15dp"
+            android:fontFamily="@font/roboto"
+            android:maxLines="2"
+            android:text="@{songItem.title}"
             android:textColor="@color/onPrimary"
             android:textSize="22sp"
-            android:text="@{songItem.title}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/songId"

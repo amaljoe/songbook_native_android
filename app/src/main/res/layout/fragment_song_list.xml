@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/background_light"
         tools:context=".songs.SongListFragment">
-    
+
         <include
             android:id="@+id/toolbarSong"
             layout="@layout/song_toolbar" />

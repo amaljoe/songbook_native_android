@@ -32,7 +32,6 @@
                 android:background="@drawable/search_bg"
                 android:drawableStart="@drawable/search_icon"
                 android:drawablePadding="10dp"
-                android:focusable="false"
                 android:fontFamily="@font/roboto_medium"
                 android:hint="@string/song_search_hint"
                 android:paddingStart="10dp"
