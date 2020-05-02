@@ -53,6 +53,12 @@ class SongListFragment : Fragment() {
             val intent = Intent(this.activity, SearchSongActivity::class.java)
             startActivity(intent)
         }
+        songListViewModel.itemClicked.observe(viewLifecycleOwner, Observer {
+            val intent = Intent(this.activity, SongDisplayActivity::class.java)
+            intent.putExtra("songSelected",it)
+            intent.putExtra("hasSongSelected",true)
+            startActivity(intent)
+        })
         return binding.root
     }
 }

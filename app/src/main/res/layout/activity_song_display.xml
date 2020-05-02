@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="songDisplayData"
+            type="com.example.csisongbook.songs.SongDisplayViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/songListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        tools:context=".songs.SongListFragment">
+
+        <include
+            android:id="@+id/toolbarSong"
+            layout="@layout/song_toolbar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar_extension"
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:background="@drawable/toolbar_extension_bg"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarSong">
+
+            <TextView
+                android:id="@+id/songTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/onPrimary"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="20sp"
+                android:maxLines="1"
+                app:layout_constraintBaseline_toBaselineOf="@+id/songNum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/songNum"
+                tools:text="@string/song_item" />
+
+            <TextView
+                android:id="@+id/songNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:textAppearance="@style/TextBold"
+                android:textColor="@color/onPrimary"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.75"
+                tools:text="461" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/songDisplayPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarSong" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
