@@ -35,14 +35,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/onPrimary"
                 android:fontFamily="@font/roboto_medium"
+                android:maxLines="2"
+                android:textColor="@color/onPrimary"
                 android:textSize="20sp"
-                android:maxLines="1"
-                app:layout_constraintBaseline_toBaselineOf="@+id/songNum"
+                app:layout_constraintBottom_toBottomOf="@+id/songNum"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/songNum"
-                tools:text="@string/song_item" />
+                app:layout_constraintTop_toTopOf="@+id/songNum"
+                tools:text="@string/songTitleTools" />
 
             <TextView
                 android:id="@+id/songNum"
@@ -51,11 +52,11 @@
                 android:layout_marginStart="32dp"
                 android:textAppearance="@style/TextBold"
                 android:textColor="@color/onPrimary"
-                android:textSize="24sp"
+                android:textSize="28sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.75"
+                app:layout_constraintVertical_bias="0.6"
                 tools:text="461" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
