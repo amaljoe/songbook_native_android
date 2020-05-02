@@ -3,6 +3,7 @@ package com.example.csisongbook.songs
 import android.app.Application
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -62,6 +63,11 @@ class SearchSongActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
 
+        })
+        searchSongViewModel.itemClicked.observe(this, Observer {
+            val intent = Intent(this, SongDisplayActivity::class.java)
+            intent.putExtra("songSelected",it)
+            startActivity(intent)
         })
     }
 

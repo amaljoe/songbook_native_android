@@ -31,9 +31,7 @@ class SongDisplayActivity : AppCompatActivity() {
         binding.songDisplayData = songDisplayViewModel
 
         val songNum = intent.getIntExtra("songSelected", 0).minus(251)
-        var hasSong = intent.getBooleanExtra("hasSongSelected", false)
         Log.i("SongPassed", songNum.toString())
-        Log.i("hasSong", hasSong.toString())
 
         val adapter = SongDisplayAdapter(SongDisplayListener { songId ->
             songDisplayViewModel.onItemClick(songId)

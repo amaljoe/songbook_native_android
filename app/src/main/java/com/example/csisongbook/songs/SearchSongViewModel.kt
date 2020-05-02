@@ -20,8 +20,10 @@ class SearchSongViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    val itemClicked = MutableLiveData<Int>()
+
     fun onItemClick(songId: Int) {
-        Log.i("songClicked",songId.toString())
+        itemClicked.value = songId
     }
 
 

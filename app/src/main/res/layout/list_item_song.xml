@@ -28,7 +28,7 @@
             android:textAlignment="center"
             android:textColor="@color/onPrimary"
             android:textSize="24sp"
-            android:text="501"
+            app:SongNumber="@{songItem}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
