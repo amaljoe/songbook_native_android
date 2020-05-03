@@ -1,13 +1,20 @@
 package com.example.csisongbook.songs
 
+import android.animation.Animator
+import android.animation.AnimatorInflater
+import android.animation.AnimatorListenerAdapter
+import android.animation.AnimatorSet
 import android.app.Application
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
+import android.view.animation.AccelerateInterpolator
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -65,9 +72,24 @@ class SearchSongActivity : AppCompatActivity() {
 
         })
         searchSongViewModel.itemClicked.observe(this, Observer {
-            val intent = Intent(this, SongDisplayActivity::class.java)
-            intent.putExtra("songSelected",it)
-            startActivity(intent)
+            (AnimatorInflater.loadAnimator(this, R.animator.circle_masking) as AnimatorSet).apply {
+                setTarget(binding.circleMask)
+                duration = 300
+                interpolator = AccelerateInterpolator()
+                start()
+                binding.circleMask.visibility = View.VISIBLE
+                addListener(object: AnimatorListenerAdapter(){
+                    override fun onAnimationEnd(animation: Animator?) {
+                        super.onAnimationEnd(animation)
+                        val intent = Intent(this@SearchSongActivity, SongDisplayActivity::class.java)
+                        intent.putExtra("songSelected",it)
+                        startActivity(intent)
+                        Handler().postDelayed({
+                            binding.circleMask.visibility = View.GONE
+                        }, 100)
+                    }
+                })
+            }
         })
     }
 

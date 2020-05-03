@@ -1,16 +1,16 @@
 package com.example.csisongbook.songs
 
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
-import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
+import com.example.csisongbook.R
 import com.example.csisongbook.SongDatabase
 import com.example.csisongbook.databinding.ActivitySongDisplayBinding
-import kotlinx.android.synthetic.main.activity_song_display.*
 
 class SongDisplayActivity : AppCompatActivity() {
 
@@ -23,7 +23,19 @@ class SongDisplayActivity : AppCompatActivity() {
         val application = requireNotNull(this).application
         val dataSource = SongDatabase.getInstance(application).songDatabaseDao
         val songDisplayViewModelFactory = SongDisplayViewModelFactory(dataSource, application)
-
+        val toolbarExtAnim = (AnimatorInflater.loadAnimator(this, R.animator.slide_in_top) as AnimatorSet).apply {
+            setTarget(binding.toolbarExtension)
+        }
+        val toolbarAnim = (AnimatorInflater.loadAnimator(this, R.animator.slide_in_top) as AnimatorSet).apply {
+            setTarget(binding.toolbarSong)
+        }
+        val songDisplayAnim = (AnimatorInflater.loadAnimator(this, R.animator.slide_in_right) as AnimatorSet).apply {
+            setTarget(binding.songDisplayPager)
+        }
+        AnimatorSet().apply {
+            play(toolbarExtAnim).with(toolbarAnim).with(songDisplayAnim)
+            start()
+        }
         @Suppress("DEPRECATION")
         val songDisplayViewModel = ViewModelProviders.of(this, songDisplayViewModelFactory)
             .get(SongDisplayViewModel::class.java)
@@ -38,9 +50,6 @@ class SongDisplayActivity : AppCompatActivity() {
         })
         binding.songDisplayPager.setCurrentItem(songNum, false)
         binding.songDisplayPager.adapter = adapter
-        Handler().postDelayed({
-            binding.songDisplayPager.setCurrentItem(songNum, false)
-        }, 100)
         binding.songDisplayPager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -58,6 +67,7 @@ class SongDisplayActivity : AppCompatActivity() {
         songDisplayViewModel.songs.observe(this, Observer { it ->
             it?.let {
                 adapter.submitList(it)
+                binding.songDisplayPager.setCurrentItem(songNum, false)
             }
         })
 
