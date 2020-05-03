@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.csisongbook.Song
 import com.example.csisongbook.databinding.SongPageItemBinding
 
-class SongDisplayAdapter(val clickListener: SongDisplayListener) : ListAdapter<Song,
+class SongDisplayAdapter : ListAdapter<Song,
         SongDisplayAdapter.ViewHolder>(SongDisplayDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
 
-        holder.bind(clickListener,item)
+        holder.bind(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,9 +24,8 @@ class SongDisplayAdapter(val clickListener: SongDisplayListener) : ListAdapter<S
     class ViewHolder private constructor(val binding: SongPageItemBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(clickListener: SongDisplayListener, item: Song) {
+        fun bind(item: Song) {
             binding.songDisplayItem = item
-            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -55,8 +54,4 @@ class SongDisplayDiffCallback : DiffUtil.ItemCallback<Song>() {
     override fun areContentsTheSame(oldItem: Song, newItem: Song): Boolean {
         return oldItem == newItem
     }
-}
-
-class SongDisplayListener(val clickListener: (songId: Int) -> Unit) {
-    fun onClick(song: Song) = clickListener(song.songId)
 }

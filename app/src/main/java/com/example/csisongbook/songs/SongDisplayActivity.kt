@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.csisongbook.R
 import com.example.csisongbook.SongDatabase
@@ -36,8 +36,7 @@ class SongDisplayActivity : AppCompatActivity() {
             play(toolbarExtAnim).with(toolbarAnim).with(songDisplayAnim)
             start()
         }
-        @Suppress("DEPRECATION")
-        val songDisplayViewModel = ViewModelProviders.of(this, songDisplayViewModelFactory)
+        val songDisplayViewModel = ViewModelProvider(this, songDisplayViewModelFactory)
             .get(SongDisplayViewModel::class.java)
         binding.lifecycleOwner = this
         binding.songDisplayData = songDisplayViewModel
@@ -45,10 +44,7 @@ class SongDisplayActivity : AppCompatActivity() {
         val songNum = intent.getIntExtra("songSelected", 0).minus(251)
         Log.i("SongPassed", songNum.toString())
 
-        val adapter = SongDisplayAdapter(SongDisplayListener { songId ->
-            songDisplayViewModel.onItemClick(songId)
-        })
-        binding.songDisplayPager.setCurrentItem(songNum, false)
+        val adapter = SongDisplayAdapter()
         binding.songDisplayPager.adapter = adapter
         binding.songDisplayPager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {

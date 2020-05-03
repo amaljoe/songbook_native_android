@@ -6,9 +6,6 @@
         <variable
             name="songDisplayItem"
             type="com.example.csisongbook.Song" />
-        <variable
-            name="clickListener"
-            type="com.example.csisongbook.songs.SongDisplayListener" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/songPageLayout"

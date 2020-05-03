@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.csisongbook.Song
 import com.example.csisongbook.databinding.ListItemSearchSongBinding
-import com.example.csisongbook.databinding.ListItemSongBinding
 
 class SearchSongAdapter(val clickListener: SearchSongListener) : ListAdapter<Song,
         SearchSongAdapter.ViewHolder>(SearchSongDiffCallback()) {
