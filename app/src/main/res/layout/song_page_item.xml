@@ -12,21 +12,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/songLyrics"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
-            android:text="@{songDisplayItem.lyrics}"
-            android:textColor="@color/onPrimary"
-            android:textSize="18sp"
+        <ScrollView
+            android:id="@+id/songScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="32dp"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="ജീവന്‍റെ ഉറവിടം ക്രിസ്തുവത്രെ നാവിനാലവനെ നാം ഘോഷിക്കാം  അവനത്രെ എന്‍ പാപഹരന്‍ തന്‍ ജീവനാലെന്നെയും വീണ്ടെടുത്തു            1 താഴ്ചയിലെനിക്കവന്‍ തണലേകി  താങ്ങിയെന്നെ വീഴ്ചയില്‍ വഴി നടത്തി  തുടച്ചെന്‍റെ കണ്ണുനീര്‍ പൊന്‍കരത്താല്‍  തുടിക്കുന്നെന്‍ മനം സ്വര്‍ഗ്ഗ സന്തോഷത്താല്‍ - (ജീവന്‍റെ..)           2 നമുക്കു മുന്‍ ചൊന്നതാം വിശുദ്ധന്മാരാല്‍  അലംകൃതമായ തിരുവചനം അനുദിനം തരുമവന്‍ പുതുശക്തിയാല്‍  അനുഭവിക്കും അതി സന്തോഷത്താല്‍ - (ജീവന്‍റെ..)           3 കരകാണാതാഴിയില്‍ വലയുവോരെ  കരുണയെ കാംക്ഷിക്കും മൃതപ്രായരേ വരികവന്‍ ചാരത്തു ബന്ധിതരേ തരുമവന്‍ കൃപ  മനഃശ്ശാന്തിയതും - (ജീവന്‍റെ..)" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/songLyrics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:text="@{songDisplayItem.lyrics}"
+                android:textColor="@color/onPrimary"
+                android:textSize="18sp"
+                tools:text="ജീവന്‍റെ ഉറവിടം ക്രിസ്തുവത്രെ നാവിനാലവനെ നാം ഘോഷിക്കാം  അവനത്രെ എന്‍ പാപഹരന്‍ തന്‍ ജീവനാലെന്നെയും വീണ്ടെടുത്തു            1 താഴ്ചയിലെനിക്കവന്‍ തണലേകി  താങ്ങിയെന്നെ വീഴ്ചയില്‍ വഴി നടത്തി  തുടച്ചെന്‍റെ കണ്ണുനീര്‍ പൊന്‍കരത്താല്‍  തുടിക്കുന്നെന്‍ മനം സ്വര്‍ഗ്ഗ സന്തോഷത്താല്‍ - (ജീവന്‍റെ..)           2 നമുക്കു മുന്‍ ചൊന്നതാം വിശുദ്ധന്മാരാല്‍  അലംകൃതമായ തിരുവചനം അനുദിനം തരുമവന്‍ പുതുശക്തിയാല്‍  അനുഭവിക്കും അതി സന്തോഷത്താല്‍ - (ജീവന്‍റെ..)           3 കരകാണാതാഴിയില്‍ വലയുവോരെ  കരുണയെ കാംക്ഷിക്കും മൃതപ്രായരേ വരികവന്‍ ചാരത്തു ബന്ധിതരേ തരുമവന്‍ കൃപ  മനഃശ്ശാന്തിയതും - (ജീവന്‍റെ..)" />
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
