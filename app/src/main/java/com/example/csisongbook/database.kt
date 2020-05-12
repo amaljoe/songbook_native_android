@@ -29,6 +29,9 @@ interface SongDatabaseDao {
 
     @Query("Select * from songs where titleEng like  :query")
     fun getSearchResults(query : String) : LiveData<List<Song>>
+
+    @Query("Select * from songs where songId like  :query")
+    fun getNumSearchResults(query : String) : LiveData<List<Song>>
 }
 
 @Database(entities = [Song::class], version = 1, exportSchema = false)

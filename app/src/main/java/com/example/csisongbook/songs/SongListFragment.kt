@@ -39,7 +39,7 @@ class SongListFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.songdata = songListViewModel
         @RequiresApi(Build.VERSION_CODES.O)
-        binding.toolbarSong.searchEdit.focusable = 0
+        binding.toolbarSong.searchEdit.focusable = View.NOT_FOCUSABLE
         val adapter = SongListAdapter(SongListListener { songId ->
             songListViewModel.onItemClick(songId)
         })

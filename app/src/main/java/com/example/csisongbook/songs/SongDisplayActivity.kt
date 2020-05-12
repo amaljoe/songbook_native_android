@@ -2,8 +2,13 @@ package com.example.csisongbook.songs
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.WindowManager
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +16,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.csisongbook.R
 import com.example.csisongbook.SongDatabase
 import com.example.csisongbook.databinding.ActivitySongDisplayBinding
+import kotlinx.android.synthetic.main.song_toolbar.view.*
 
 class SongDisplayActivity : AppCompatActivity() {
 
@@ -23,6 +29,9 @@ class SongDisplayActivity : AppCompatActivity() {
         val application = requireNotNull(this).application
         val dataSource = SongDatabase.getInstance(application).songDatabaseDao
         val songDisplayViewModelFactory = SongDisplayViewModelFactory(dataSource, application)
+        @RequiresApi(Build.VERSION_CODES.O)
+        binding.toolbarSong.searchEdit.focusable = View.NOT_FOCUSABLE
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         val toolbarExtAnim = (AnimatorInflater.loadAnimator(this, R.animator.slide_in_top) as AnimatorSet).apply {
             setTarget(binding.toolbarExtension)
         }
@@ -54,6 +63,10 @@ class SongDisplayActivity : AppCompatActivity() {
             }
 
         })
+        binding.toolbarSong.searchEdit.setOnClickListener {
+            val intent = Intent(this, SearchSongActivity::class.java)
+            startActivity(intent)
+        }
         songDisplayViewModel.currentSong.observe(this, Observer {
             it?.let {
                 binding.songNum.text = it.songId.toString()

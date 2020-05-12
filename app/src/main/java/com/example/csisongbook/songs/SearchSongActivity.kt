@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -52,7 +53,17 @@ class SearchSongActivity : AppCompatActivity() {
         binding.toolbarSong.searchEdit.requestFocus()
         binding.toolbarSong.searchEdit.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                getItemsFromDb(s.toString())
+                val query = s.toString()
+                if (query.isDigitsOnly()) {
+                    getNumItemsFromDb(query)
+                    if (query.length == 3) {
+                        Log.i("item clicked","item $query")
+                        searchSongViewModel.onItemClick(query.toInt())
+                    }
+                }
+                else {
+                    getItemsFromDb(query)
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -75,6 +86,7 @@ class SearchSongActivity : AppCompatActivity() {
                         val intent = Intent(this@SearchSongActivity, SongDisplayActivity::class.java)
                         intent.putExtra("songSelected",it)
                         startActivity(intent)
+                        finishAndRemoveTask()
                         Handler().postDelayed({
                             binding.circleMask.visibility = View.GONE
                         }, 100)
@@ -97,6 +109,22 @@ class SearchSongActivity : AppCompatActivity() {
         searchText = "%$searchText%"
 
         searchForItems(desc = searchText).observe(this, Observer { list ->
+            list?.let {
+                adapter.submitList(it)
+            }
+
+        })
+
+    }
+
+    private fun searchForNumItems(desc: String) : LiveData<List<Song>> {
+        return dataSource.getNumSearchResults(desc)
+    }
+    private fun getNumItemsFromDb(searchTxt: String) {
+        var searchText = searchTxt
+        searchText = "%$searchText%"
+
+        searchForNumItems(desc = searchText).observe(this, Observer { list ->
             list?.let {
                 adapter.submitList(it)
             }
