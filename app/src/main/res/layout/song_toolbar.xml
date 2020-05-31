@@ -34,7 +34,7 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/roboto_medium"
                 android:hint="@string/song_search_hint"
-                android:inputType="text"
+                android:inputType="textVisiblePassword"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textColorHint="@color/onPrimaryVariant"
