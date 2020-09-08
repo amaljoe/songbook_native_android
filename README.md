@@ -1,4 +1,4 @@
-# songbook_native_android
+# Songbook in Native Android
 Christian songbook in malayalam made with Kotlin as a native Android application.
 
 This app is currently been ported to flutter(IOS - Android cross platform framework).
