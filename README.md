@@ -1,5 +1,5 @@
 # Songbook in Native Android
-Christian songbook in Malayalam made with Kotlin as a native Android application.  
+Christian songbook in Malayalam - a native Android app made with Kotlin.  
 
 This app is currently been ported to flutter(IOS - Android cross platform framework).  
 Visit the following repo for new updates :  
@@ -20,3 +20,6 @@ Features to be added :
 
 AI Integrated Feature (under development):  
 -> Auto detect a song while in church so that it can be opened even if the user doesn't know the song number or title.  
+
+Programming languages used:
+Kotlin, Java, SQL
