@@ -21,5 +21,5 @@ Features to be added :
 AI Integrated Feature (under development):  
 -> Auto detect a song while in church so that it can be opened even if the user doesn't know the song number or title.  
 
-Programming languages used:
-Kotlin, Java, SQL
+Programming languages used :  
+Kotlin, Java, SQL  
