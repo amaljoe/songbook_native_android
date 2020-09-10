@@ -13,12 +13,12 @@ https://github.com/amaljoe/songbook_flutter
 -> Though the songs are in malayalam, you can search through them in manglish (Malayalam transilerated to English).  
 -> In the lyrics page, swipe right or left for next and previous song respectively.  
 
-Features to be added :  
+## Features to be added :  
 -> Track the song history of user and show personlised recomendations based on the history.  
 -> User can add a song to their favourites list.  
 -> Individual accounts linked to google for each user to store their favourite songs and personalised recomendations.  
 
-AI Integrated Feature (under development) :  
+## AI Integrated Feature (under development) :  
 -> Auto detect a song while in church so that it can be opened even if the user doesn't know the song number or title.  
 
 Programming languages used :  
