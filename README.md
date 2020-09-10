@@ -5,7 +5,7 @@ This app is currently been ported to flutter(IOS - Android cross platform framew
 Visit the following repo for new updates :  
 https://github.com/amaljoe/songbook_flutter  
 
-Features :  
+## Features :  
 -> List out the songs in a menu format.  
 -> 'Always on screen' while opening the lyrics page.  
 -> Beautiful UI animations and transitions in between screen changes.  
